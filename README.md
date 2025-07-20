@@ -2,7 +2,12 @@
 This is a web app madeto mimic a productivity app. It has the note-taking feature and the todo-list feature.
 
 
-![preview](./assets/preview.png)
+![preview](./assets/preview_light.png)
+
+
+
+
+![preview](./assets/preview_dark.png)
 
 
 
