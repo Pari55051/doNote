@@ -1,6 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Gabriela&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+    --color-primary: #4338ca;
+    --color-primary-light: #4f46e5;
+    --color-bg: #f3f3f3;
+    --color-bg-variant: #d4d4d4;
+    --color-text-primary: #333;
+    --color-text-secondary: #666;
+    --color-controls-notes-model-bg: #fff;
+    --color-white-black: #000;
+    --color-box-shadow: rgba(0, 0, 0, 0.05)
+}
+
+.dark-mode {
+    --color-primary: #4338ca;
+    --color-primary-light: #4f46e5;
+    --color-bg: #222;
+    --color-bg-variant: #4d4d4d;
+    --color-text-primary: #f3f3f3;
+    --color-text-secondary: #ccc;
+    --color-controls-notes-model-bg: #1b1b1b;
+    --color-white-black: #fff;
+    --color-box-shadow: rgba(255, 255, 255, 0.05)
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -8,9 +32,10 @@
 }
 
 body {
-    background-color: #f8f9fa;
-    color: #333;
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
     padding: 10px 35px;
+    transition: all 1s;
 }
 
 main {
@@ -20,17 +45,41 @@ main {
     min-height: 100vh;
 }
 
-.body {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-}
-
-
 .header {
     text-align: center;
     margin-bottom: 40px;
+}
+
+#theme-switch {
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--color-bg-variant);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+#theme-switch svg {
+    fill: var(--color-text-secondary);
+}
+
+#theme-switch svg:last-child {
+    display: none;
+}
+
+.dark-mode #theme-switch svg:first-child {
+    display: none;
+}
+
+.dark-mode #theme-switch svg:last-child {
+    display: block;
 }
 
 .header h1 {
@@ -43,8 +92,15 @@ main {
 
 .header p {
     font-size: 1.3rem;
-    color: #666;
+    color: var(--color-text-secondary);
     font-family: "Jost", sans-serif;
+}
+
+.body {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
 }
 
 .note-container {
@@ -58,11 +114,12 @@ main {
 }
 
 .controls {
-    background-color: #fff;
+    background-color: var(--color-controls-notes-model-bg);
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px var(--color-box-shadow);
     padding: 20px;
     margin-bottom: 32px;
+    transition: all 1s;
 }
 
 .controls-container {
@@ -133,13 +190,18 @@ main {
 }
 
 .note-card {
-    background-color: #fff;
+    background-color: var(--color-controls-notes-model-bg);
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px var(--color-box-shadow);
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
     height: 250px;
     width: 400px;
+    transition: all 1s;
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .note-card:hover {
@@ -162,7 +224,7 @@ main {
 .note-title {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #333;
+    color: var(--color-text-primary);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -175,7 +237,7 @@ main {
 }
 
 .delete-btn {
-    color: #999;
+    color: var(--color-text-secondary);
     background: none;
     border: none;
     font-size: 1rem;
@@ -188,7 +250,7 @@ main {
 }
 
 .note-text {
-    color: #666;
+    color: var(--color-text-secondary);
     margin-bottom: 40px;
     white-space: pre-line;
     max-height: 130px;
@@ -239,7 +301,7 @@ main {
 
 .note-date {
     font-size: 0.75rem;
-    color: #999;
+    color: var(--color-text-secondary);
 }
 
 .empty-state {
@@ -257,12 +319,12 @@ main {
 
 .empty-state h3 {
     font-size: 1.5rem;
-    color: #666;
+    color: var(--color-text-secondary);
     margin-bottom: 12px;
 }
 
 .empty-state p {
-    color: #999;
+    color: var(--color-text-secondary);
     margin-bottom: 20px;
 }
 
@@ -288,7 +350,7 @@ main {
 }
 
 .modal {
-    background-color: #fff;
+    background-color: var(--color-controls-notes-model-bg);
     border-radius: 12px;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
     width: 100%;
@@ -310,6 +372,10 @@ main {
     border-bottom: 1px solid #eee;
 }
 
+.modal-header h3 {
+    color: var(--color-white-black);
+}
+
 .modal-title {
     font-size: 1.25rem;
     font-weight: 600;
@@ -319,13 +385,13 @@ main {
     background: none;
     border: none;
     font-size: 1.25rem;
-    color: #999;
+    color: var(--color-text-secondary);
     cursor: pointer;
     transition: color 0.3s;
 }
 
 .modal-close:hover {
-    color: #666;
+    color: var(--color-text-secondary);
 }
 
 .modal-body {
@@ -486,7 +552,7 @@ main {
 
 .cancel-btn {
     background-color: #e5e7eb;
-    color: #333;
+    color: var(--color-text-primary);
     border: none;
 }
 
@@ -510,7 +576,6 @@ main {
     animation: fadeIn 0.4s ease-out forwards;
 }
 
-/* Todo */
 .todo-container {
     display: flex;
     align-items: center;
@@ -530,11 +595,14 @@ main {
     flex-direction: column;
     gap: 30px;
     border-radius: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-    border: 3px solid rgba(255, 255, 255, 0.18);
+    /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.15); */
+    box-shadow: 0 0 12px var(--color-box-shadow);
+    /* border: 3px solid rgba(255, 255, 255, 0.18); */
+    background-color: var(--color-controls-notes-model-bg);
     backdrop-filter: blur(10px);
     position: absolute;
     top: 150px;
+    transition: all 1s;
 }
 
 .todo-app h1 {
@@ -545,6 +613,7 @@ main {
     padding: 15px 20px;
     border-radius: 10px;
     border: 2px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 50px var(--color-box-shadow);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -557,7 +626,7 @@ main {
 }
 
 .details h3 {
-    color: #000;
+    color: var(--color-text-primary);
 }
 
 #progress-bar {
@@ -612,7 +681,7 @@ main {
 }
 
 .input-area input::placeholder {
-    color: #999999;
+    color: var(--color-text-secondary);
 }
 
 .input-area button {
@@ -695,7 +764,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 #task-list li span {

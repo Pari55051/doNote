@@ -8,6 +8,7 @@ This is a web app madeto mimic a productivity app. It has the note-taking featur
 
 
 ## Features
+- dark/light mode
 
 ### Notes Section
 - add note
