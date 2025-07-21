@@ -44,3 +44,5 @@ This is a web app madeto mimic a productivity app. It has the note-taking featur
 - fonts: [Montserrat](https://fonts.google.com/specimen/Montserrat?icon.size=100&icon.color=%23e3e3e3), [Jost](https://fonts.google.com/specimen/Jost?icon.size=100&icon.color=%23e3e3e3&query=jost)
 - icons: [font awesome](https://fontawesome.com/)
 - assets: [undraw](https://undraw.co/)
+
+[![Athena Award Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Faward.athena.hackclub.com%2Fapi%2Fbadge)](https://award.athena.hackclub.com?utm_source=readme)
